@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.2"
+    defaultConfig {
+        applicationId "com.example.offline_android"
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    //图片
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    //请求
+    implementation 'com.lzy.net:okgo:3.0.4'
+    //视频播放
+    implementation 'com.ycjiang:VideoPlayModule-Lite:2.3.32'
+    //数据解析
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.readystatesoftware.chuck:library:1.0.4'
+    //控件初始化
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor "com.jakewharton:butterknife-compiler:10.2.1"
+}
