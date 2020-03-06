@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/main_left_fragment"
-        android:name="cm.offline.tv.pgae.LeftFragment"
-        android:layout_width="300dp"
+        android:name="cm.offline.tv.ui.left.LeftFragment"
+        android:layout_width="252dp"
         android:layout_height="match_parent" />
 
     <TextView
-        android:layout_width="30dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent" />
 
     <fragment
         android:id="@+id/main_right_fragment"
-        android:name="cm.offline.tv.pgae.RightFragment"
+        android:name="cm.offline.tv.ui.right.RightFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

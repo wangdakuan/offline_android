@@ -1,4 +1,4 @@
-package cm.offline.tv.pgae;
+package cm.offline.tv.ui.left;
 
 import android.app.Fragment;
 import android.os.Bundle;

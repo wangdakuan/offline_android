@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="cm.offline.tv.pgae.AdvertisingPage"
+            android:name="cm.offline.tv.ui.AdvertisingPage"
             android:banner="@drawable/app_icon_your_company"
             android:icon="@drawable/app_icon_your_company"
             android:label="@string/app_name"
@@ -31,13 +31,13 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
+<!--                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />-->
             </intent-filter>
         </activity>
 
         <activity
-            android:name="cm.offline.tv.pgae.MainActivity"
+            android:name="cm.offline.tv.ui.HomeActivity"
             android:screenOrientation="landscape" />
     </application>
 

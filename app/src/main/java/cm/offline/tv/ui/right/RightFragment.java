@@ -1,4 +1,4 @@
-package cm.offline.tv.pgae;
+package cm.offline.tv.ui.right;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -26,9 +26,6 @@ import com.example.offline_android.R;
  */
 public class RightFragment extends Fragment {
 
-    private TextView mTvTest;
-    private Button mBtn01;
-    private int mInt = 1;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +41,5 @@ public class RightFragment extends Fragment {
     }
 
     private void initView(View view) {
-        mTvTest = (TextView) view.findViewById(R.id.tv_test);
-        mBtn01 = (Button) view.findViewById(R.id.btn_01);
-        mBtn01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInt++;
-                mTvTest.setText(mInt + "");
-            }
-        });
     }
 }

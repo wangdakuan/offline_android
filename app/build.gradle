@@ -40,4 +40,6 @@ dependencies {
     //控件初始化
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor "com.jakewharton:butterknife-compiler:10.2.1"
+
+    implementation 'com.nineoldandroids:library:2.4.0'
 }
