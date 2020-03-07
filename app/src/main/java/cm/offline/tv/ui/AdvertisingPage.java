@@ -5,9 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.offline_android.R;
-
-import chuangyuan.ycj.videolibrary.video.MediaSourceBuilder;
+import cm.offline.tv.R;
 import cm.offline.tv.utils.ActivityUtils;
 import com.google.android.exoplayer2.ExoPlaybackException;
 

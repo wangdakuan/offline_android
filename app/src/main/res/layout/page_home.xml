@@ -15,9 +15,8 @@
         android:layout_width="50dp"
         android:layout_height="match_parent" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/main_right_fragment"
-        android:name="cm.offline.tv.ui.right.RightFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

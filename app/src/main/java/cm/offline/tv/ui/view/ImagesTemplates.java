@@ -21,8 +21,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.example.offline_android.R;
 import com.nineoldandroids.view.ViewHelper;
+
+import cm.offline.tv.R;
 
 /**
  * Copyright (C), 2015-2020, 湖南靠谱科技股份有限公司
