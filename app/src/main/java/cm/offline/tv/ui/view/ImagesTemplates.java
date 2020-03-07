@@ -24,6 +24,7 @@ import androidx.annotation.RequiresApi;
 import com.nineoldandroids.view.ViewHelper;
 
 import cm.offline.tv.R;
+import cm.offline.tv.utils.SizeUtils;
 
 /**
  * Copyright (C), 2015-2020, 湖南靠谱科技股份有限公司
@@ -71,9 +72,8 @@ public class ImagesTemplates extends FrameLayout {
         mFlRoot = (FrameLayout) findViewById(R.id.fl_root);
         mIvBg = (ImageView) findViewById(R.id.iv_bg);
         mFlZone = (FrameLayout) findViewById(R.id.fl_zone);
-        initBg(30, 90, 800, 1200);//背景起点 长宽
-        initEditZone(30, 30, 600, 800);
-
+        initBg(0, 0, SizeUtils.dp2px(424), SizeUtils.dp2px(407));//背景起点 长宽  407
+        initEditZone(SizeUtils.dp2px(126), SizeUtils.dp2px(90), SizeUtils.dp2px(173), SizeUtils.dp2px(259));
         initEditImage();
     }
 
@@ -88,7 +88,6 @@ public class ImagesTemplates extends FrameLayout {
         mIvBg.setX(x);
         mIvBg.setY(y);
         mIvBg.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        mIvBg.setImageResource(R.mipmap.bg_v4_release);
         ViewGroup.LayoutParams layoutParams = mIvBg.getLayoutParams();
         layoutParams.width = width;
         layoutParams.height = height;
@@ -119,7 +118,7 @@ public class ImagesTemplates extends FrameLayout {
 
                 Bitmap bitmap = Bitmap.createBitmap(mIvBg.getWidth(), mIvBg.getHeight(), Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
-                canvas.drawColor(Color.WHITE);
+                canvas.drawColor(Color.TRANSPARENT);
                 mIvBg.draw(canvas);
 
 
@@ -155,16 +154,18 @@ public class ImagesTemplates extends FrameLayout {
 
     private void initEditImage() {
 
-        final View flEditImage = View.inflate(getContext(), R.layout.add_img_item, null);
-        mFlZone.addView(flEditImage);
-
-        final ImageView iv = (ImageView) flEditImage.findViewById(R.id.iv);
-        final ImageView ivLeft = (ImageView) flEditImage.findViewById(R.id.ivLeft);
-        final ImageView ivRight = (ImageView) flEditImage.findViewById(R.id.ivRight);
-//        final ImageView ivBLeft = (ImageView) flEditImage.findViewById(R.id.ivBLeft);
-        final ImageView ivBRight = (ImageView) flEditImage.findViewById(R.id.ivBRight);
+        final View view = View.inflate(getContext(), R.layout.add_img_item, null);
+        mFlZone.addView(view);
+        final FrameLayout flEditImage = view.findViewById(R.id.fl);
+        final ImageView iv = (ImageView) view.findViewById(R.id.iv);
+        final ImageView ivLeft = (ImageView) view.findViewById(R.id.ivLeft);
+        final ImageView ivRight = (ImageView) view.findViewById(R.id.ivRight);
+        final ImageView ivBRight = (ImageView) view.findViewById(R.id.ivBRight);
         iv.setImageResource(R.mipmap.shaosiming);
         flEditImage.setTag(iv);
+//        FrameLayout.LayoutParams layoutParams = (LayoutParams) flEditImage.getLayoutParams();
+//        layoutParams.width = iv.getMeasuredWidth();
+//        layoutParams.height = iv.getMeasuredHeight();
 
 
         ViewTreeObserver vto = flEditImage.getViewTreeObserver();

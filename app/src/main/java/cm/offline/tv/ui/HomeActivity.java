@@ -71,7 +71,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onPageEvent(MessageEvent event) {
-        Log.e("---------------", "-----onPageEvent--MessageEvent--|==");
         if (event.mEventKey == MessageEvent.START_CUSTOM_PAGE) {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightCustomMadeFragment(), R.id.main_right_fragment, false);
         } else if (event.mEventKey == MessageEvent.START_ADVERTISING_PAGE) {

@@ -8,4 +8,9 @@
 
 
     <color name="indicator_colors">#B0CF2B</color>
+
+
+    <color name="bg_colors_f8f8f8">#F8F8F8</color>
+
+    <color name="text_colors_343338">#343338</color>
 </resources>

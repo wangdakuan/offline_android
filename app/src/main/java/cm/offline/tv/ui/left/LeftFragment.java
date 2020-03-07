@@ -76,7 +76,11 @@ public class LeftFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
-        mBanner.stop();
+        if (null != unbinder) {
+            unbinder.unbind();
+        }
+        if (null != mBanner) {
+            mBanner.stop();
+        }
     }
 }

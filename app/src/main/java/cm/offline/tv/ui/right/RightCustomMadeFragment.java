@@ -45,14 +45,15 @@ public class RightCustomMadeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (!isAccessibilitySettingsOn(getActivity())) {
-            try {
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            } catch (Exception e) {
-                startActivity(new Intent(Settings.ACTION_SETTINGS));
-                e.printStackTrace();
-            }
-        }
+        // TODO: 2020-03-07 暂时不开启监听
+//        if (!isAccessibilitySettingsOn(getActivity())) {
+//            try {
+//                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+//            } catch (Exception e) {
+//                startActivity(new Intent(Settings.ACTION_SETTINGS));
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     public boolean isAccessibilitySettingsOn(Context mContext) {

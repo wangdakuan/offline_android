@@ -89,6 +89,14 @@ public class RightAdvertisingFragment extends Fragment {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        if(null != mBanner){
+            mBanner.stop();
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         if(null != unbinder){

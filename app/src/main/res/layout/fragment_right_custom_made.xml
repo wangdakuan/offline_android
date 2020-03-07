@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222222"
-    android:gravity="center"
+    android:background="@color/bg_colors_f8f8f8"
     android:orientation="vertical">
 
-</LinearLayout>
+    <FrameLayout
+        android:layout_width="410dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp">
+
+        <ImageView
+            android:id="@+id/iv_clothes_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/test_yifu" />
+
+        <cm.offline.tv.ui.view.ImagesTemplates
+            android:id="@+id/making_diy_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_white_rounded_corners"
+            android:gravity="center"
+            android:text="预览效果"
+            android:textColor="@color/text_colors_343338"
+            android:textSize="12dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/diy_btn_bottom_kuanshi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/diy_btn_bottom_kuanshi" />
+
+        <ImageView
+            android:id="@+id/diy_btn_bottom_tupian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/diy_btn_bottom_tupian" />
+
+        <ImageView
+            android:id="@+id/diy_btn_bottom_moban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/diy_btn_bottom_moban" />
+
+        <ImageView
+            android:id="@+id/diy_btn_bottom_wenzi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/diy_btn_bottom_wenzi" />
+    </LinearLayout>
+
+</RelativeLayout>
