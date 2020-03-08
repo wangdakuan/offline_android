@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@color/bg_colors_f8f8f8" />
+        android:background="@color/chuck_colorAccent" />
 
     <FrameLayout
         android:id="@+id/main_right_fragment"

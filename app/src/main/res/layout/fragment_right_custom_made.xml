@@ -24,6 +24,7 @@
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/btn_preview"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center|bottom"
@@ -38,7 +39,8 @@
     <LinearLayout
         android:id="@+id/ly_diy_btn_bottom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="128dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
@@ -89,6 +91,7 @@
                 android:src="@mipmap/ic_diy_right_btn_shopping_list_default" />
 
             <TextView
+                android:id="@+id/tv_shopping_list_num"
                 android:layout_width="wrap_content"
                 android:layout_height="12dp"
                 android:layout_gravity="right"
@@ -124,11 +127,13 @@
         android:layout_toLeftOf="@+id/fy_template">
 
         <ImageView
+            android:id="@+id/btn_layer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_diy_left_btn_layers_icon_default" />
 
         <TextView
+            android:id="@+id/tv_layer_num"
             android:layout_width="wrap_content"
             android:layout_height="12dp"
             android:layout_gravity="right"

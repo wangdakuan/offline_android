@@ -2,6 +2,7 @@ package cm.offline.tv.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -27,6 +28,28 @@ public final class ActivityUtils {
     private ActivityUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
+
+    public static Activity getActivity(@NonNull Context from) {
+        int limit = 15;
+        Context result = from;
+        if (result instanceof Activity) {
+            return (Activity) result;
+        }
+        int tryCount = 0;
+        while (result instanceof ContextWrapper) {
+            if (result instanceof Activity) {
+                return (Activity) result;
+            }
+            if (tryCount > limit) {
+                //break endless loop
+                return null;
+            }
+            result = ((ContextWrapper) result).getBaseContext();
+            tryCount++;
+        }
+        return null;
+    }
+
 
     /**
      * 获取栈顶Activity
