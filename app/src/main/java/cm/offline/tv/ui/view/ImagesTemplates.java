@@ -72,8 +72,8 @@ public class ImagesTemplates extends FrameLayout {
         mFlRoot = (FrameLayout) findViewById(R.id.fl_root);
         mIvBg = (ImageView) findViewById(R.id.iv_bg);
         mFlZone = (FrameLayout) findViewById(R.id.fl_zone);
-        initBg(0, 0, SizeUtils.dp2px(424), SizeUtils.dp2px(407));//背景起点 长宽  407
-        initEditZone(SizeUtils.dp2px(126), SizeUtils.dp2px(90), SizeUtils.dp2px(173), SizeUtils.dp2px(259));
+        initBg(0, 0, SizeUtils.dp2px(848), SizeUtils.dp2px(813));//背景起点 长宽  407
+        initEditZone(SizeUtils.dp2px(250), SizeUtils.dp2px(182), SizeUtils.dp2px(350), SizeUtils.dp2px(524));
         initEditImage();
     }
 
