@@ -1,15 +1,20 @@
 package cm.offline.tv.ui.popup;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import cm.offline.tv.R;
+import cm.offline.tv.ui.adapter.ChooseLayerAdapter;
 import cm.offline.tv.utils.ButterKnifeUtil;
+import cm.offline.tv.utils.SizeUtils;
 import cm.offline.tv.widget.popup.basepopup.BasePopupWindow;
 
 /**
@@ -40,6 +45,9 @@ public class DiyLayerControlPopup extends BasePopupWindow {
     @BindView(R.id.btn_diy_left_zhihou)
     ImageView mBtnDiyLeftZhihou;
 
+    private LinearLayoutManager mLayoutManager;
+    private ChooseLayerAdapter mChooseLayerAdapter;
+
     public DiyLayerControlPopup(Context context) {
         super(context);
         setBackground(0);
@@ -55,6 +63,23 @@ public class DiyLayerControlPopup extends BasePopupWindow {
     @Override
     public void onViewCreated(View contentView) {
         ButterKnifeUtil.bind(this, contentView);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mLayerList.setLayoutManager(mLayoutManager);
+        mLayerList.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                int childAdapterPosition = parent.getChildAdapterPosition(view);
+                if (childAdapterPosition == 0) {
+                    outRect.set(SizeUtils.dp2px(10), SizeUtils.dp2px(10), SizeUtils.dp2px(10), SizeUtils.dp2px(10));
+                } else {
+                    outRect.set(SizeUtils.dp2px(10), 0, SizeUtils.dp2px(10), SizeUtils.dp2px(10));
+                }
+            }
+        });
+        mChooseLayerAdapter = new ChooseLayerAdapter(getContext());
+        mLayerList.setAdapter(mChooseLayerAdapter);
     }
 
     @OnClick({R.id.btn_close_layers, R.id.btn_diy_left_zhihuan, R.id.btn_diy_left_shuiping,
@@ -82,10 +107,11 @@ public class DiyLayerControlPopup extends BasePopupWindow {
         }
     }
 
-    private void setDiyBtnLeftStyle(int btn){
+    private void setDiyBtnLeftStyle(int btn) {
         mBtnDiyLeftZhihuan.setSelected(btn == 0);
         mBtnDiyLeftShuiping.setSelected(btn == 1);
         mBtnDiyLeftChuizhi.setSelected(btn == 2);
         mBtnDiyLeftZhiqian.setSelected(btn == 3);
         mBtnDiyLeftZhihou.setSelected(btn == 4);
-    }}
+    }
+}

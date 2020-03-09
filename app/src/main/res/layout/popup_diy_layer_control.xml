@@ -18,11 +18,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/layer_list"
             android:layout_width="100dp"
+            android:background="@drawable/bg_white_rounded_corners_15"
             android:layout_height="340dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:orientation="vertical">
 
             <ImageView

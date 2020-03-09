@@ -12,8 +12,8 @@
 
     <color name="bg_colors_f8f8f8">#F8F8F8</color>
     <color name="bg_colors_ffffff">#FFFFFF</color>
-    <color name="text_colors_ffffff">#FFFFFF</color>
 
+    <color name="text_colors_ffffff">#FFFFFF</color>
     <color name="text_colors_343338">#343338</color>
 
     <color name="line_colors_343338">#F5F5F5</color>

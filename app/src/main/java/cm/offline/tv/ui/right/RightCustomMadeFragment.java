@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cm.offline.tv.R;
 import cm.offline.tv.service.MonitorTouchService;
+import cm.offline.tv.ui.popup.ChooseSizePopup;
 import cm.offline.tv.ui.popup.DiyLayerControlPopup;
 import cm.offline.tv.ui.popup.DiyMaterialPopup;
 import cm.offline.tv.ui.view.ImagesTemplates;
@@ -78,6 +79,7 @@ public class RightCustomMadeFragment extends Fragment {
 
     private DiyMaterialPopup mDiyMaterialPopup; //素材选择
     private DiyLayerControlPopup mLayerControlPopup; //图层控制
+    private ChooseSizePopup mChooseSizePopup; //尺寸选择框
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -171,6 +173,17 @@ public class RightCustomMadeFragment extends Fragment {
                         mLayerControlPopup.showPopupWindow(mBtnLayer);
                     }
                 }
+                if (view.getId() == R.id.btn_diy_right_btn_shopping_buy) {
+                    if (null == mChooseSizePopup) {
+                        mChooseSizePopup = new ChooseSizePopup(getActivity());
+                    }
+                    if (null != mChooseSizePopup && !mChooseSizePopup.isShowing()) {
+                        mChooseSizePopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                        mChooseSizePopup.showPopupWindow(mLyDiyBtnBottom);
+                    }
+                }
+
+
                 break;
         }
     }
@@ -209,6 +222,12 @@ public class RightCustomMadeFragment extends Fragment {
                     setDiyBtnBottomStyle(-1);
                 }
             });
+            mDiyMaterialPopup.setMaterialCallback(new DiyMaterialPopup.onMaterialCallback() {
+                @Override
+                public void onCallback(int step) {
+                    setDiyBtnBottomStyle(step);
+                }
+            });
         }
         if (diyBtn != -1 &&  null != mLayerControlPopup && mLayerControlPopup.isShowing()) {
             mLayerControlPopup.dismiss();
@@ -216,6 +235,11 @@ public class RightCustomMadeFragment extends Fragment {
         if (diyBtn != -1 && null != mDiyMaterialPopup && !mDiyMaterialPopup.isShowing()) {
             mDiyMaterialPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
             mDiyMaterialPopup.showPopupWindow(mLyDiyBtnBottom);
+            mDiyMaterialPopup.setStep(diyBtn);
+        }else {
+            if(null != mDiyMaterialPopup && mDiyMaterialPopup.isShowing()){
+                mDiyMaterialPopup.setStep(diyBtn);
+            }
         }
     }
 
