@@ -1,6 +1,7 @@
 package cm.offline.tv.ui.right;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -97,52 +98,15 @@ public class RightCustomMadeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnifeUtil.bind(this, view);
-
-        // TODO: 2020-03-07 暂时不开启监听
-//        if (!isAccessibilitySettingsOn(getActivity())) {
-//            try {
-//                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-//            } catch (Exception e) {
-//                startActivity(new Intent(Settings.ACTION_SETTINGS));
-//                e.printStackTrace();
-//            }
-//        }
-    }
-
-    public boolean isAccessibilitySettingsOn(Context mContext) {
-        int accessibilityEnabled = 0;
-        // TestService为对应的服务
-        final String service = getActivity().getPackageName() + "/" + MonitorTouchService.class.getCanonicalName();
-        // com.z.buildingaccessibilityservices/android.accessibilityservice.AccessibilityService
-        try {
-            accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(),
-                    Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
-        TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
-
-        if (accessibilityEnabled == 1) {
-            String settingValue = Settings.Secure.getString(mContext.getApplicationContext().getContentResolver(),
-                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
-            if (settingValue != null) {
-                mStringColonSplitter.setString(settingValue);
-                while (mStringColonSplitter.hasNext()) {
-                    String accessibilityService = mStringColonSplitter.next();
-                    if (accessibilityService.equalsIgnoreCase(service)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
     }
 
     @OnClick({R.id.btn_preview, R.id.diy_btn_bottom_kuanshi, R.id.diy_btn_bottom_tupian, R.id.diy_btn_bottom_moban,
             R.id.diy_btn_bottom_wenzi, R.id.btn_diy_right_shopping_list, R.id.btn_diy_right_btn_shopping_add,
-            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer})
+            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer,R.id.ly_fragment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.ly_fragment: // 用于屏幕监听 MonitorTouchService
+                break;
             case R.id.btn_preview: //预览效果按钮
                 break;
             case R.id.diy_btn_bottom_kuanshi: //款式

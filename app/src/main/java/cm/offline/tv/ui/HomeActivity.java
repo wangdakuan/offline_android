@@ -14,7 +14,11 @@
 
 package cm.offline.tv.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.FrameLayout;
 
@@ -29,6 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cm.offline.tv.R;
 import cm.offline.tv.event.MessageEvent;
+import cm.offline.tv.service.MonitorTouchService;
 import cm.offline.tv.ui.right.RightAdvertisingFragment;
 import cm.offline.tv.ui.right.RightCustomMadeFragment;
 import cm.offline.tv.utils.FragmentUtils;
@@ -61,6 +66,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.page_home);
         ButterKnife.bind(this);
         FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightAdvertisingFragment(), R.id.main_right_fragment, false);
+        if (!isAccessibilitySettingsOn(this)) {
+            try {
+                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+            } catch (Exception e) {
+                startActivity(new Intent(Settings.ACTION_SETTINGS));
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -76,5 +89,34 @@ public class HomeActivity extends AppCompatActivity {
         } else if (event.mEventKey == MessageEvent.START_ADVERTISING_PAGE) {
             finish();
         }
+    }
+
+    public boolean isAccessibilitySettingsOn(Context mContext) {
+        int accessibilityEnabled = 0;
+        // TestService为对应的服务
+        final String service = this.getPackageName() + "/" + MonitorTouchService.class.getCanonicalName();
+        // com.z.buildingaccessibilityservices/android.accessibilityservice.AccessibilityService
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(),
+                    Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
+
+        if (accessibilityEnabled == 1) {
+            String settingValue = Settings.Secure.getString(mContext.getApplicationContext().getContentResolver(),
+                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (settingValue != null) {
+                mStringColonSplitter.setString(settingValue);
+                while (mStringColonSplitter.hasNext()) {
+                    String accessibilityService = mStringColonSplitter.next();
+                    if (accessibilityService.equalsIgnoreCase(service)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

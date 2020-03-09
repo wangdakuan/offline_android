@@ -41,7 +41,7 @@ public class MonitorTouchService extends AccessibilityService {
     }
 
     private void initDisposable() {
-        mDisposable = Flowable.intervalRange(0, 30, 0, 1, TimeUnit.SECONDS)
+        mDisposable = Flowable.intervalRange(0, 120, 0, 1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<Long>() {
                     @Override

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accessibilityEventTypes="typeWindowStateChanged|typeViewHoverEnter|typeViewHoverExit"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeViewHoverEnter|typeViewHoverExit
+     |typeViewClicked|typeTouchInteractionEnd|typeTouchExplorationGestureEnd|typeTouchExplorationGestureStart
+     |typeTouchInteractionStart|typeGestureDetectionEnd|typeGestureDetectionStart"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagIncludeNotImportantViews"
     android:canRequestFilterKeyEvents="true"
