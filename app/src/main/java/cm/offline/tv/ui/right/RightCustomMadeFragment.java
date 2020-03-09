@@ -25,6 +25,7 @@ import cm.offline.tv.service.MonitorTouchService;
 import cm.offline.tv.ui.popup.ChooseSizePopup;
 import cm.offline.tv.ui.popup.DiyLayerControlPopup;
 import cm.offline.tv.ui.popup.DiyMaterialPopup;
+import cm.offline.tv.ui.popup.MethodPaymentPopup;
 import cm.offline.tv.ui.popup.ShoppingCartPopup;
 import cm.offline.tv.ui.view.ImagesTemplates;
 import cm.offline.tv.utils.ButterKnifeUtil;
@@ -85,6 +86,8 @@ public class RightCustomMadeFragment extends Fragment {
 
     private ShoppingCartPopup mShoppingCartPopup; //购物车列表框
 
+    private MethodPaymentPopup mPaymentPopup; //支付方式框
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +108,7 @@ public class RightCustomMadeFragment extends Fragment {
 
     @OnClick({R.id.btn_preview, R.id.diy_btn_bottom_kuanshi, R.id.diy_btn_bottom_tupian, R.id.diy_btn_bottom_moban,
             R.id.diy_btn_bottom_wenzi, R.id.btn_diy_right_shopping_list, R.id.btn_diy_right_btn_shopping_add,
-            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer,R.id.ly_fragment})
+            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer, R.id.ly_fragment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ly_fragment: // 用于屏幕监听 MonitorTouchService
@@ -131,36 +134,56 @@ public class RightCustomMadeFragment extends Fragment {
                 if (null != mDiyMaterialPopup && mDiyMaterialPopup.isShowing()) {
                     mDiyMaterialPopup.dismiss();
                 }
-                if (view.getId() == R.id.btn_layer) {
-                    if (null == mLayerControlPopup) {
-                        mLayerControlPopup = new DiyLayerControlPopup(getActivity());
-                    }
-                    if (null != mLayerControlPopup && !mLayerControlPopup.isShowing()) {
-                        mLayerControlPopup.setPopupGravity(Gravity.TOP);
-                        mLayerControlPopup.showPopupWindow(mBtnLayer);
-                    }
+                clickedDiyLayerControlPopup(view.getId());
+                clickedShoppingCartPopup(view.getId());
+                // TODO: 2020-03-09 测试
+                if (view.getId() == R.id.btn_diy_right_btn_shopping_add) {
+                    clickedMethodPayment();
                 }
-                if (view.getId() == R.id.btn_diy_right_btn_shopping_buy) {
-                    if (null == mChooseSizePopup) {
-                        mChooseSizePopup = new ChooseSizePopup(getActivity());
-                    }
-                    if (null != mChooseSizePopup && !mChooseSizePopup.isShowing()) {
-                        mChooseSizePopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-                        mChooseSizePopup.showPopupWindow(mLyDiyBtnBottom);
-                    }
-                }
-
-                if(view.getId() == R.id.btn_diy_right_shopping_list){
-                    if(null == mShoppingCartPopup){
-                        mShoppingCartPopup = new ShoppingCartPopup(getActivity());
-                    }
-                    if (null != mShoppingCartPopup && !mShoppingCartPopup.isShowing()) {
-                        mShoppingCartPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-                        mShoppingCartPopup.showPopupWindow(mLyDiyBtnBottom);
-                    }
-                }
-
                 break;
+        }
+    }
+
+    /**
+     * diy图层控制弹框
+     */
+    private void clickedDiyLayerControlPopup(int viewId) {
+        if (viewId == R.id.btn_layer) {
+            if (null == mLayerControlPopup) {
+                mLayerControlPopup = new DiyLayerControlPopup(getActivity());
+            }
+            if (null != mLayerControlPopup && !mLayerControlPopup.isShowing()) {
+                mLayerControlPopup.setPopupGravity(Gravity.TOP);
+                mLayerControlPopup.showPopupWindow(mBtnLayer);
+            }
+        }
+    }
+
+    /**
+     * 购物车列表弹框
+     */
+    private void clickedShoppingCartPopup(int viewId) {
+        if (viewId == R.id.btn_diy_right_shopping_list) {
+            if (null == mShoppingCartPopup) {
+                mShoppingCartPopup = new ShoppingCartPopup(getActivity());
+            }
+            if (null != mShoppingCartPopup && !mShoppingCartPopup.isShowing()) {
+                mShoppingCartPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                mShoppingCartPopup.showPopupWindow(mLyDiyBtnBottom);
+            }
+        }
+    }
+
+    /**
+     * 支付方式弹框
+     */
+    private void clickedMethodPayment() {
+        if (null == mPaymentPopup) {
+            mPaymentPopup = new MethodPaymentPopup(getActivity());
+        }
+        if (null != mPaymentPopup && !mPaymentPopup.isShowing()) {
+            mPaymentPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+            mPaymentPopup.showPopupWindow(mLyDiyBtnBottom);
         }
     }
 
@@ -205,15 +228,15 @@ public class RightCustomMadeFragment extends Fragment {
                 }
             });
         }
-        if (diyBtn != -1 &&  null != mLayerControlPopup && mLayerControlPopup.isShowing()) {
+        if (diyBtn != -1 && null != mLayerControlPopup && mLayerControlPopup.isShowing()) {
             mLayerControlPopup.dismiss();
         }
         if (diyBtn != -1 && null != mDiyMaterialPopup && !mDiyMaterialPopup.isShowing()) {
             mDiyMaterialPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
             mDiyMaterialPopup.showPopupWindow(mLyDiyBtnBottom);
             mDiyMaterialPopup.setStep(diyBtn);
-        }else {
-            if(null != mDiyMaterialPopup && mDiyMaterialPopup.isShowing()){
+        } else {
+            if (null != mDiyMaterialPopup && mDiyMaterialPopup.isShowing()) {
                 mDiyMaterialPopup.setStep(diyBtn);
             }
         }
