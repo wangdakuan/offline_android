@@ -25,6 +25,7 @@ import cm.offline.tv.service.MonitorTouchService;
 import cm.offline.tv.ui.popup.ChooseSizePopup;
 import cm.offline.tv.ui.popup.DiyLayerControlPopup;
 import cm.offline.tv.ui.popup.DiyMaterialPopup;
+import cm.offline.tv.ui.popup.ShoppingCartPopup;
 import cm.offline.tv.ui.view.ImagesTemplates;
 import cm.offline.tv.utils.ButterKnifeUtil;
 import cm.offline.tv.widget.popup.basepopup.BasePopupWindow;
@@ -81,6 +82,8 @@ public class RightCustomMadeFragment extends Fragment {
     private DiyMaterialPopup mDiyMaterialPopup; //素材选择
     private DiyLayerControlPopup mLayerControlPopup; //图层控制
     private ChooseSizePopup mChooseSizePopup; //尺寸选择框
+
+    private ShoppingCartPopup mShoppingCartPopup; //购物车列表框
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,6 +150,15 @@ public class RightCustomMadeFragment extends Fragment {
                     }
                 }
 
+                if(view.getId() == R.id.btn_diy_right_shopping_list){
+                    if(null == mShoppingCartPopup){
+                        mShoppingCartPopup = new ShoppingCartPopup(getActivity());
+                    }
+                    if (null != mShoppingCartPopup && !mShoppingCartPopup.isShowing()) {
+                        mShoppingCartPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                        mShoppingCartPopup.showPopupWindow(mLyDiyBtnBottom);
+                    }
+                }
 
                 break;
         }

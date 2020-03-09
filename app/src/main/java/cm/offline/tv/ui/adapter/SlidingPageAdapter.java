@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cm.offline.tv.R;
+import cm.offline.tv.utils.ButterKnifeUtil;
 
 
 /**
@@ -43,14 +44,14 @@ public class SlidingPageAdapter extends BannerAdapter<String, SlidingPageAdapter
     public void onBindView(SlidingHolder holder, String data, int position, int size) {
     }
 
-    class SlidingHolder extends RecyclerView.ViewHolder {
+    static class SlidingHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.image_page)
         ImageView mImagePage;
 
         public SlidingHolder(@NonNull View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            ButterKnifeUtil.bind(this, view);
         }
     }
 }
