@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_view"
+    android:layout_width="wrap_content"
+    android:clipChildren="true"
+    android:background="@color/chuck_colorAccent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/btn_diy_delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|left"
+        android:src="@mipmap/ic_diy_delete" />
+
+    <ImageView
+        android:id="@+id/btn_diy_rotate"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|right"
+        android:src="@mipmap/ic_diy_rotate" />
+
+
+    <ImageView
+        android:id="@+id/btn_diy_zoom"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:src="@mipmap/ic_diy_zoom" />
+
+</FrameLayout>
