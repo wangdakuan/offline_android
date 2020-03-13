@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_colors_fff8f8f8"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_state_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_pay_success"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="支付成功"
+            android:textColor="@color/text_colors_343338"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="支付成功，请移步左侧区域等待打印… "
+            android:textColor="@color/text_colors_343338"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_continue_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:background="@mipmap/btn_window_gradient_click"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:text="继续购买"
+            android:visibility="gone"
+            android:textColor="@color/text_colors_ffffff"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_service_no_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_service_no_code"
+            android:drawablePadding="18dp"
+            android:layout_marginTop="45dp"
+            android:gravity="center"
+            android:textColor="@color/text_colors_000000"
+            android:textSize="20dp"
+            android:text="关注服务号\n了解更多功能与服务"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</LinearLayout>

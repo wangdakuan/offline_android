@@ -34,6 +34,7 @@ import butterknife.ButterKnife;
 import cm.offline.tv.R;
 import cm.offline.tv.event.MessageEvent;
 import cm.offline.tv.service.MonitorTouchService;
+import cm.offline.tv.ui.right.PayStatusFragment;
 import cm.offline.tv.ui.right.RightAdvertisingFragment;
 import cm.offline.tv.ui.right.RightCustomMadeFragment;
 import cm.offline.tv.utils.FragmentUtils;
@@ -88,6 +89,8 @@ public class HomeActivity extends AppCompatActivity {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightCustomMadeFragment(), R.id.main_right_fragment, false);
         } else if (event.mEventKey == MessageEvent.START_ADVERTISING_PAGE) {
             finish();
+        }else if (event.mEventKey == MessageEvent.START_PAY_STATUS_PAGE) {
+            FragmentUtils.replaceFragment(getSupportFragmentManager(), new PayStatusFragment(), R.id.main_right_fragment, false);
         }
     }
 

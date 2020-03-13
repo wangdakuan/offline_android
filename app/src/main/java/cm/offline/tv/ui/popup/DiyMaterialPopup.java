@@ -3,6 +3,7 @@ package cm.offline.tv.ui.popup;
 import android.content.Context;
 import android.graphics.Rect;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -53,6 +54,11 @@ public class DiyMaterialPopup extends BasePopupWindow {
     RecyclerView mListColor; //颜色列表
     @BindView(R.id.ly_add_text_view)
     LinearLayout mLyAddTextView; // 字体添加总布局
+
+    @BindView(R.id.ly_upload_code)
+    LinearLayout mLyUploadCode;
+    @BindView(R.id.iv_line)
+    ImageView mIvLine;
 
     private LinearLayoutManager mLayoutManager;
     private ChooseMaterialAdapter mMaterialAdapter; //选择素材适配器
@@ -171,9 +177,14 @@ public class DiyMaterialPopup extends BasePopupWindow {
             mBtnPreviousStep.setVisibility(View.VISIBLE);
         }
 
+        mLyUploadCode.setVisibility(View.GONE);
+        mIvLine.setVisibility(View.GONE);
+
         if (step == 0) {
             mTvMaterialName.setText("选择款式");
         } else if (step == 1) {
+            mLyUploadCode.setVisibility(View.VISIBLE);
+            mIvLine.setVisibility(View.VISIBLE);
             mTvMaterialName.setText("添加图片");
         } else if (step == 2) {
             mTvMaterialName.setText("选择模版");

@@ -18,6 +18,7 @@ public class MessageEvent {
 
     public static int START_CUSTOM_PAGE = 0x0001; //跳转到订制页面
     public static int START_ADVERTISING_PAGE = 0x0002; //跳转到全屏广告页
+    public static int START_PAY_STATUS_PAGE = 0x0003; //跳转到支付状态页
 
     public MessageEvent(int eventKey) {
         mEventKey = eventKey;

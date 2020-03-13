@@ -1,20 +1,14 @@
 package cm.offline.tv.ui.popup;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.view.View;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import org.greenrobot.eventbus.EventBus;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import cm.offline.tv.R;
-import cm.offline.tv.ui.adapter.ShoppingCartAdapter;
+import cm.offline.tv.event.MessageEvent;
 import cm.offline.tv.utils.ButterKnifeUtil;
-import cm.offline.tv.utils.SizeUtils;
 import cm.offline.tv.widget.popup.basepopup.BasePopupWindow;
 
 /**
@@ -49,11 +43,15 @@ public class MethodPaymentPopup extends BasePopupWindow {
 
     }
 
-    @OnClick({R.id.btn_close})
+    @OnClick({R.id.btn_close,R.id.btn_exit})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_close:
                 dismiss();
+                break;
+            case R.id.btn_exit:
+                dismiss();
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_PAY_STATUS_PAGE));
                 break;
         }
     }
