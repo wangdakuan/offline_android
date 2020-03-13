@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="35dp"
-            android:src="@mipmap/ic_diy_left_btn_layers_close_default" />
+            android:src="@mipmap/btn_shopping_list_btn_delete" />
 
         <LinearLayout
             android:id="@+id/ly_content"
@@ -79,7 +79,7 @@
                 android:id="@+id/btn_reduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/btn_number_reduce_default" />
 
             <TextView
                 android:layout_width="80dp"
@@ -93,7 +93,7 @@
                 android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/btn_number_add_default" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

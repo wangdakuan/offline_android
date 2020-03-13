@@ -10,10 +10,11 @@
         android:layout_width="504dp"
         android:layout_height="match_parent" />
 
-    <TextView
+    <ImageView
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@color/chuck_colorAccent" />
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_img_guide_default" />
 
     <FrameLayout
         android:id="@+id/main_right_fragment"

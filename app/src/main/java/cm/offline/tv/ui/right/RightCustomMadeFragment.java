@@ -1,10 +1,6 @@
 package cm.offline.tv.ui.right;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,11 +18,11 @@ import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cm.offline.tv.R;
-import cm.offline.tv.service.MonitorTouchService;
 import cm.offline.tv.ui.popup.ChooseSizePopup;
 import cm.offline.tv.ui.popup.DiyLayerControlPopup;
 import cm.offline.tv.ui.popup.DiyMaterialPopup;
 import cm.offline.tv.ui.popup.MethodPaymentPopup;
+import cm.offline.tv.ui.popup.NotEditorPopup;
 import cm.offline.tv.ui.popup.ShoppingCartPopup;
 import cm.offline.tv.ui.view.ImagesTemplates;
 import cm.offline.tv.utils.ButterKnifeUtil;
@@ -44,6 +41,9 @@ import cm.offline.tv.widget.popup.basepopup.BasePopupWindow;
  */
 public class RightCustomMadeFragment extends Fragment {
 
+    @BindView(R.id.ly_fragment)
+    RelativeLayout mLyFragment;
+
     @BindView(R.id.fy_template)
     FrameLayout mFyTemplate; // 整个模板控件
     @BindView(R.id.iv_clothes_style)
@@ -53,8 +53,13 @@ public class RightCustomMadeFragment extends Fragment {
     @BindView(R.id.btn_preview)
     TextView mBtnPreview; //预览效果按钮
 
+    /**
+     * 底部按钮
+     */
     @BindView(R.id.ly_diy_btn_bottom)
     LinearLayout mLyDiyBtnBottom; //diy按钮
+    @BindView(R.id.ly_bottom_edit_view)
+    LinearLayout mLyBottomEditView; //编辑底部按钮
     @BindView(R.id.diy_btn_bottom_kuanshi)
     ImageView mDiyBtnBottomKuanshi; //款式按钮
     @BindView(R.id.diy_btn_bottom_tupian)
@@ -64,6 +69,18 @@ public class RightCustomMadeFragment extends Fragment {
     @BindView(R.id.diy_btn_bottom_wenzi)
     ImageView mDiyBtnBottomWenzi; //文字
 
+    @BindView(R.id.ly_bottom_preview_view)
+    LinearLayout mLyBottomPreviewView; //预览底部按钮
+    @BindView(R.id.btn_bottom_shopping_list)
+    ImageView mBtnBottomShoppingList; //购物车按钮
+    @BindView(R.id.btn_bottom_shopping_add)
+    ImageView mBtnBottomShoppingAdd; //添加购物车按钮
+    @BindView(R.id.btn_bottom_shopping_buy)
+    ImageView mBtnBottomShoppingBuy; //立即购买
+
+    /**
+     * 右边按钮
+     */
     @BindView(R.id.ly_diy_right_btn)
     LinearLayout mLyDiyRightBtn; //按钮总控件
     @BindView(R.id.btn_diy_right_shopping_list)
@@ -75,10 +92,16 @@ public class RightCustomMadeFragment extends Fragment {
     @BindView(R.id.btn_diy_right_btn_shopping_buy)
     ImageView mBtnDiyRightBtnShoppingBuy; //购买
 
+    //左边按钮
     @BindView(R.id.btn_layer)
     ImageView mBtnLayer; //图层按钮
     @BindView(R.id.tv_layer_num)
     TextView mTvLayerNum; //图层数量标签
+    @BindView(R.id.view_mask)
+    View mViewMask; //遮罩
+    @BindView(R.id.view_mask_all)
+    View mViewMaskAll; //遮罩
+
 
     private DiyMaterialPopup mDiyMaterialPopup; //素材选择
     private DiyLayerControlPopup mLayerControlPopup; //图层控制
@@ -87,6 +110,8 @@ public class RightCustomMadeFragment extends Fragment {
     private ShoppingCartPopup mShoppingCartPopup; //购物车列表框
 
     private MethodPaymentPopup mPaymentPopup; //支付方式框
+
+    private NotEditorPopup mNotEditorPopup; //未编辑时的弹框
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,12 +133,23 @@ public class RightCustomMadeFragment extends Fragment {
 
     @OnClick({R.id.btn_preview, R.id.diy_btn_bottom_kuanshi, R.id.diy_btn_bottom_tupian, R.id.diy_btn_bottom_moban,
             R.id.diy_btn_bottom_wenzi, R.id.btn_diy_right_shopping_list, R.id.btn_diy_right_btn_shopping_add,
-            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer, R.id.ly_fragment})
+            R.id.btn_diy_right_btn_shopping_buy, R.id.btn_layer, R.id.ly_fragment, R.id.view_mask, R.id.view_mask_all
+            , R.id.btn_bottom_shopping_list, R.id.btn_bottom_shopping_add, R.id.btn_bottom_shopping_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ly_fragment: // 用于屏幕监听 MonitorTouchService
                 break;
+            case R.id.view_mask: //遮罩点击事件
+            case R.id.view_mask_all:
+                popupDismiss();
+                break;
             case R.id.btn_preview: //预览效果按钮
+                popupDismiss();
+                if (mBtnPreview.getText().toString().contains("编辑")) {
+                    setPreviewEditSwitch(true);
+                } else {
+                    setPreviewEditSwitch(false);
+                }
                 break;
             case R.id.diy_btn_bottom_kuanshi: //款式
                 setDiyBtnBottomStyle(0);
@@ -127,6 +163,9 @@ public class RightCustomMadeFragment extends Fragment {
             case R.id.diy_btn_bottom_wenzi: //文字
                 setDiyBtnBottomStyle(3);
                 break;
+            case R.id.btn_bottom_shopping_list: ////购物车
+            case R.id.btn_bottom_shopping_add: //添加购物车
+            case R.id.btn_bottom_shopping_buy://购买
             case R.id.btn_diy_right_shopping_list: //购物车
             case R.id.btn_diy_right_btn_shopping_add: //添加购物车
             case R.id.btn_diy_right_btn_shopping_buy: //购买
@@ -134,13 +173,125 @@ public class RightCustomMadeFragment extends Fragment {
                 if (null != mDiyMaterialPopup && mDiyMaterialPopup.isShowing()) {
                     mDiyMaterialPopup.dismiss();
                 }
+                //diy图层控制弹框
                 clickedDiyLayerControlPopup(view.getId());
+                //购物车列表弹框
                 clickedShoppingCartPopup(view.getId());
-                // TODO: 2020-03-09 测试
-                if (view.getId() == R.id.btn_diy_right_btn_shopping_add) {
-                    clickedMethodPayment();
+
+                if (view.getId() == R.id.btn_diy_right_btn_shopping_buy) {
+                    clickedDiyNotEditorPopup();
+                }
+                if (view.getId() == R.id.btn_bottom_shopping_buy) {
+                    clickedChooseSizePopup();
                 }
                 break;
+
+        }
+    }
+
+    /**
+     * 预览编辑切换
+     *
+     * @param isEdit
+     */
+    private void setPreviewEditSwitch(boolean isEdit) {
+        if (isEdit) {
+            mBtnPreview.setText("预览效果");
+            mLyBottomPreviewView.setVisibility(View.GONE);
+            mLyBottomEditView.setVisibility(View.VISIBLE);
+            mBtnLayer.setVisibility(View.VISIBLE);
+            mTvLayerNum.setVisibility(View.VISIBLE);
+        } else {
+            mBtnPreview.setText("继续编辑");
+            mLyBottomPreviewView.setVisibility(View.VISIBLE);
+            mLyBottomEditView.setVisibility(View.GONE);
+            mBtnLayer.setVisibility(View.GONE);
+            mTvLayerNum.setVisibility(View.GONE);
+        }
+    }
+
+
+    /**
+     * 关闭popup
+     */
+    private void popupDismiss() {
+        //未编辑提示框
+        if (null != mNotEditorPopup && mNotEditorPopup.isShowing()) {
+            mNotEditorPopup.dismiss();
+        }
+        //图片框
+        if (null != mLayerControlPopup && mLayerControlPopup.isShowing()) {
+            mLayerControlPopup.dismiss();
+        }
+        //购物车列表框
+        if (null != mShoppingCartPopup && mShoppingCartPopup.isShowing()) {
+            mShoppingCartPopup.dismiss();
+        }
+        //支付框
+        if (null != mPaymentPopup && mPaymentPopup.isShowing()) {
+            mPaymentPopup.dismiss();
+        }
+        //尺寸选择框
+        if (null != mChooseSizePopup && mChooseSizePopup.isShowing()) {
+            mChooseSizePopup.dismiss();
+        }
+    }
+
+    /**
+     * 点击购买弹框
+     */
+    private void clickedChooseSizePopup() {
+        if (null == mChooseSizePopup) {
+            mChooseSizePopup = new ChooseSizePopup(getActivity());
+            mChooseSizePopup.setOnDismissListener(new BasePopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    if (null != mViewMask && mViewMask.isShown()) {
+                        mViewMask.setVisibility(View.GONE);
+                    }
+                }
+            });
+            mChooseSizePopup.setChooseSizeCallback(new ChooseSizePopup.onChooseSizeCallback() {
+                @Override
+                public void onClickedPay() {
+                    clickedMethodPayment();
+                }
+            });
+        }
+        if (null != mChooseSizePopup && !mChooseSizePopup.isShowing()) {
+            mChooseSizePopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+            mChooseSizePopup.showPopupWindow(mLyDiyBtnBottom);
+            mViewMask.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * 未编辑时提示框
+     */
+    private void clickedDiyNotEditorPopup() {
+        if (null == mNotEditorPopup) {
+            mNotEditorPopup = new NotEditorPopup(getActivity());
+            mNotEditorPopup.setOnDismissListener(new BasePopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    if (null != mViewMaskAll && mViewMaskAll.isShown()) {
+                        mViewMaskAll.setVisibility(View.GONE);
+                    }
+                }
+            });
+            mNotEditorPopup.setNotEditorCallback(new NotEditorPopup.onNotEditorCallback() {
+                @Override
+                public void onConfirm() {
+                    mNotEditorPopup.dismiss();
+                    setPreviewEditSwitch(false);
+                    clickedChooseSizePopup();
+                }
+            });
+        }
+        if (null != mNotEditorPopup && !mNotEditorPopup.isShowing()) {
+            mNotEditorPopup.setPopupGravity(Gravity.CENTER);
+            mNotEditorPopup.showPopupWindow(mLyFragment);
+            mViewMaskAll.setVisibility(View.VISIBLE);
         }
     }
 
@@ -180,10 +331,19 @@ public class RightCustomMadeFragment extends Fragment {
     private void clickedMethodPayment() {
         if (null == mPaymentPopup) {
             mPaymentPopup = new MethodPaymentPopup(getActivity());
+            mPaymentPopup.setOnDismissListener(new BasePopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    if (null != mViewMask && mViewMask.isShown()) {
+                        mViewMask.setVisibility(View.GONE);
+                    }
+                }
+            });
         }
         if (null != mPaymentPopup && !mPaymentPopup.isShowing()) {
             mPaymentPopup.setPopupGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
             mPaymentPopup.showPopupWindow(mLyDiyBtnBottom);
+            mViewMask.setVisibility(View.VISIBLE);
         }
     }
 
@@ -241,5 +401,4 @@ public class RightCustomMadeFragment extends Fragment {
             }
         }
     }
-
 }

@@ -66,14 +66,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.page_home);
         ButterKnife.bind(this);
         FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightAdvertisingFragment(), R.id.main_right_fragment, false);
-        if (!isAccessibilitySettingsOn(this)) {
-            try {
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            } catch (Exception e) {
-                startActivity(new Intent(Settings.ACTION_SETTINGS));
-                e.printStackTrace();
-            }
-        }
+//        if (!isAccessibilitySettingsOn(this)) {
+//            try {
+//                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+//            } catch (Exception e) {
+//                startActivity(new Intent(Settings.ACTION_SETTINGS));
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override

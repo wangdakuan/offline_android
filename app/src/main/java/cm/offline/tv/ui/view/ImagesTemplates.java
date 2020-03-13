@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -39,8 +38,9 @@ import cm.offline.tv.utils.SizeUtils;
 public class ImagesTemplates extends FrameLayout {
 
     private FrameLayout mFlRoot;
+//    private FrameLayout mFlDiy;
     private ImageView mIvBg;
-    private FrameLayout mFlZone;
+//    private FrameLayout mFlZone;
 
     private List<DiyAddImageView> mViews = new ArrayList<>();
 
@@ -69,7 +69,6 @@ public class ImagesTemplates extends FrameLayout {
         View.inflate(getContext(), R.layout.view_images_templates, this);
         mFlRoot = (FrameLayout) findViewById(R.id.fl_root);
         mIvBg = (ImageView) findViewById(R.id.iv_bg);
-        mFlZone = (FrameLayout) findViewById(R.id.fl_zone);
         initBg(0, 0, SizeUtils.dp2px(848), SizeUtils.dp2px(813));//背景起点 长宽  407
         initEditZone(SizeUtils.dp2px(250), SizeUtils.dp2px(182), SizeUtils.dp2px(350), SizeUtils.dp2px(524));
         addDiyView();
@@ -82,20 +81,11 @@ public class ImagesTemplates extends FrameLayout {
         imageView.setDiyEditCallbackListener(new DiyAddImageView.diyEditCallbackListener() {
             @Override
             public void onDeleteCallback(View view) {
-                mFlZone.removeView(imageView);
+                mFlRoot.removeView(imageView);
                 mViews.remove(imageView);
             }
-            @Override
-            public void onTouchMobileCallback(MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    mFlRoot.setClipChildren(false);
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    mFlRoot.setClipChildren(true);
-                    mFlRoot.invalidate();
-                }
-            }
         });
-        mFlZone.addView(imageView);
+        mFlRoot.addView(imageView);
         mViews.add(imageView);
     }
     /**
@@ -160,14 +150,6 @@ public class ImagesTemplates extends FrameLayout {
                 canvas.drawPath(path, p);
 
                 mIvBg.setImageBitmap(bitmap);
-                //显示编辑区域范围
-                mFlZone.setX(x + mIvBg.getX());
-                mFlZone.setY(y + mIvBg.getY());
-                FrameLayout.LayoutParams layoutParams = (LayoutParams) mFlZone.getLayoutParams();
-                layoutParams.width = width;
-                layoutParams.height = height;
-                mFlZone.setLayoutParams(layoutParams);
-
             }
         });
     }

@@ -21,6 +21,8 @@ import javax.net.ssl.SSLSession;
 
 import okhttp3.OkHttpClient;
 
+import static com.lzy.okgo.https.HttpsUtils.*;
+
 /**
  * Copyright (C), 2015-2020, 湖南靠谱科技股份有限公司
  * FileName: OfflineApp
@@ -68,7 +70,7 @@ public class OfflineApp  extends Application {
 
         //https相关设置，以下几种方案根据需要自己设置
         //方法一：信任所有证书,不安全有风险
-        HttpsUtils.SSLParams sslParams1 = HttpsUtils.getSslSocketFactory();
+        SSLParams sslParams1 = getSslSocketFactory();
         //方法三：使用预埋证书，校验服务端证书（自签名证书）
         //HttpsUtils.SSLParams sslParams3 = HttpsUtils.getSslSocketFactory(getAssets().open("srca.cer"));
         //方法四：使用bks证书和密码管理客户端证书（双向认证），使用预埋证书，校验服务端证书（自签名证书）

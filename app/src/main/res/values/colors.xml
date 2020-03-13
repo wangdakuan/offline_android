@@ -13,12 +13,17 @@
     <color name="bg_colors_f8f8f8">#F8F8F8</color>
     <color name="bg_colors_ffffff">#FFFFFF</color>
     <color name="bg_colors_4BF3F3F3">#4BF3F3F3</color>
+    <color name="bg_colors_f5f5f5">#F5F5F5</color>
 
     <color name="text_colors_ffffff">#FFFFFF</color>
     <color name="text_colors_343338">#343338</color>
+    <color name="text_colors_99343338">#99343338</color>
     <color name="text_colors_613E94">#613E94</color>
+    <color name="text_colors_0175F4">#0175F4</color>
 
-    <color name="line_colors_343338">#F5F5F5</color>
+    <color name="line_colors_f5f5f5">#F5F5F5</color>
+
+    <color name="mask_colors_ff343338">#80343338</color>
 
 <!--    <color name="line_colors_343338">#D0104C</color>-->
 

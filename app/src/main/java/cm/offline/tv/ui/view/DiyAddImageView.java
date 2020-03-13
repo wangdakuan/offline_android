@@ -45,6 +45,8 @@ public class DiyAddImageView extends FrameLayout {
     ImageView mBtnDiyZoom;
     @BindView(R.id.fl_view)
     FrameLayout mFlView;
+    @BindView(R.id.fy_diy)
+    FrameLayout mFyDiy;
 
     private float centerX, centerX0;
     private float centerY, centerY0;
@@ -82,7 +84,6 @@ public class DiyAddImageView extends FrameLayout {
     private void initView() {
         final View view = View.inflate(getContext(), R.layout.item_add_img_view, this);
         ButterKnifeUtil.bind(this, view);
-        setBackgroundColor(getResources().getColor(R.color.fastlane_background));
         mIvMaterial.setImageResource(R.mipmap.shaosiming);
         mFlView.setTag(mIvMaterial);
         ViewTreeObserver vto = this.getViewTreeObserver();
@@ -123,9 +124,7 @@ public class DiyAddImageView extends FrameLayout {
                     downX = (int) event.getRawX();
                     downY = (int) event.getRawY();
                     isMove = false;
-                    if (null != mDiyEditCallbackListener) {
-                        mDiyEditCallbackListener.onTouchMobileCallback(event);
-                    }
+                    mFyDiy.setClipChildren(false);
                 }
                 if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     isMove = true;
@@ -143,9 +142,8 @@ public class DiyAddImageView extends FrameLayout {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     centerX = centerX0 + view.getTranslationX();
                     centerY = centerY0 + view.getTranslationY();
-                    if (null != mDiyEditCallbackListener) {
-                        mDiyEditCallbackListener.onTouchMobileCallback(event);
-                    }
+                    mFyDiy.setClipChildren(true);
+                    mFyDiy.invalidate();
 
                     if (CheckIsOut(iv, flview)) {
                         ViewGroup parent = (ViewGroup) flview.getParent();
@@ -304,8 +302,6 @@ public class DiyAddImageView extends FrameLayout {
 
     public interface diyEditCallbackListener {
         void onDeleteCallback(View view);
-
-        void onTouchMobileCallback(MotionEvent event);
     }
 
     public void setDiyEditCallbackListener(diyEditCallbackListener diyEditCallbackListener) {

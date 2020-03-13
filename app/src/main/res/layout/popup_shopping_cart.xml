@@ -10,12 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:src="@mipmap/ic_diy_left_btn_layers_close_default" />
+        android:src="@mipmap/btn_click_close" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="810dp"
         android:layout_height="660dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="25dp"
         app:cardBackgroundColor="@color/bg_colors_ffffff"
         app:cardCornerRadius="25dp"
@@ -35,12 +35,28 @@
                 android:textColor="@color/text_colors_343338"
                 android:textSize="30dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_shopping"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/bg_colors_4BF3F3F3" />
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_shopping"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg_colors_4BF3F3F3" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bg_window_img_top_shadow" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:src="@mipmap/bg_window_img_bottom_shadow" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,9 +68,11 @@
                     android:id="@+id/btn_determine"
                     android:layout_width="600dp"
                     android:layout_height="100dp"
+                    android:paddingBottom="20dp"
+                    android:background="@mipmap/btn_window_gradient_color_ok_click"
                     android:gravity="center"
                     android:text="确定"
-                    android:textColor="@color/text_colors_343338"
+                    android:textColor="@color/text_colors_ffffff"
                     android:textSize="30dp" />
             </LinearLayout>
 

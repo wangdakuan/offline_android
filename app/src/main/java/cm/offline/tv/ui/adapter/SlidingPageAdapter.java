@@ -29,9 +29,13 @@ import cm.offline.tv.utils.ButterKnifeUtil;
  * <author> <time> <version> <desc>
  * 作者姓名 修改时间 版本号 描述
  */
-public class SlidingPageAdapter extends BannerAdapter<String, SlidingPageAdapter.SlidingHolder> {
+public class SlidingPageAdapter extends BannerAdapter<Integer, SlidingPageAdapter.SlidingHolder> {
 
-    public SlidingPageAdapter(List<String> mDatas) {
+//    public SlidingPageAdapter(List<String> mDatas) {
+//        super(mDatas);
+//    }
+
+    public SlidingPageAdapter(List<Integer> mDatas) {
         super(mDatas);
     }
 
@@ -41,7 +45,8 @@ public class SlidingPageAdapter extends BannerAdapter<String, SlidingPageAdapter
     }
 
     @Override
-    public void onBindView(SlidingHolder holder, String data, int position, int size) {
+    public void onBindView(SlidingHolder holder, Integer data, int position, int size) {
+        holder.mImagePage.setImageResource(data);
     }
 
     static class SlidingHolder extends RecyclerView.ViewHolder {

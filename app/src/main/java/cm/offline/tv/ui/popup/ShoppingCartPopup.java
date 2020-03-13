@@ -41,8 +41,8 @@ public class ShoppingCartPopup extends BasePopupWindow {
     public ShoppingCartPopup(Context context) {
         super(context);
         setBackground(0);
-//        setOutSideTouchable(false);
-        setOutSideDismiss(true);
+        setOutSideTouchable(true);
+        setOutSideDismiss(false);
     }
 
     @Override

@@ -34,8 +34,8 @@ public class MethodPaymentPopup extends BasePopupWindow {
     public MethodPaymentPopup(Context context) {
         super(context);
         setBackground(0);
-//        setOutSideTouchable(false);
-        setOutSideDismiss(true);
+        setOutSideTouchable(true);
+        setOutSideDismiss(false);
     }
 
     @Override

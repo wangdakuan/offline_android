@@ -30,45 +30,12 @@
             android:layout_height="50dp"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/btn_white_rounded_corners"
+            android:background="@drawable/btn_white_rounded_corners_25"
             android:gravity="center"
             android:text="预览效果"
             android:textColor="@color/text_colors_343338"
             android:textSize="20dp" />
     </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/ly_diy_btn_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="128dp"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:id="@+id/diy_btn_bottom_kuanshi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/diy_btn_bottom_kuanshi" />
-
-        <ImageView
-            android:id="@+id/diy_btn_bottom_tupian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/diy_btn_bottom_tupian" />
-
-        <ImageView
-            android:id="@+id/diy_btn_bottom_moban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/diy_btn_bottom_moban" />
-
-        <ImageView
-            android:id="@+id/diy_btn_bottom_wenzi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/diy_btn_bottom_wenzi" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ly_diy_right_btn"
@@ -148,4 +115,94 @@
             android:textSize="7dp" />
     </FrameLayout>
 
+    <View
+        android:id="@+id/view_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mask_colors_ff343338"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ly_diy_btn_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/ly_bottom_preview_view"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white_rounded_corners_t50"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btn_bottom_shopping_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/btn_diy_bottom_shopping_list_default" />
+
+                <ImageView
+                    android:id="@+id/btn_bottom_shopping_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:src="@mipmap/btn_diy_bottom_shopping_add_default" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_bottom_shopping_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/btn_diy_bottom_shopping_buy_default" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_bottom_edit_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/diy_btn_bottom_kuanshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diy_btn_bottom_kuanshi" />
+
+            <ImageView
+                android:id="@+id/diy_btn_bottom_tupian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diy_btn_bottom_tupian" />
+
+            <ImageView
+                android:id="@+id/diy_btn_bottom_moban"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diy_btn_bottom_moban" />
+
+            <ImageView
+                android:id="@+id/diy_btn_bottom_wenzi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diy_btn_bottom_wenzi" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/view_mask_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mask_colors_ff343338"
+        android:visibility="gone" />
 </RelativeLayout>

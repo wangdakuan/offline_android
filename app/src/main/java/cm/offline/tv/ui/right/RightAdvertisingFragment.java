@@ -25,6 +25,7 @@ import cm.offline.tv.R;
 import cm.offline.tv.event.MessageEvent;
 import cm.offline.tv.ui.adapter.SlidingPageAdapter;
 import cm.offline.tv.ui.view.indicator.MyCircleIndicator;
+import cm.offline.tv.utils.SizeUtils;
 
 /**
  * Copyright (C), 2015-2020, 湖南靠谱科技股份有限公司
@@ -60,16 +61,20 @@ public class RightAdvertisingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        List<String> strings = new ArrayList<>();
-        strings.add("1111");
-        strings.add("1111");
-        mBanner.setAdapter(new SlidingPageAdapter(strings));
+        List<Integer> integers = new ArrayList<>();
+        integers.add(R.mipmap.bg_img_banner_01);
+        integers.add(R.mipmap.bg_img_banner_02);
+        integers.add(R.mipmap.bg_img_banner_03);
+        mBanner.setAdapter(new SlidingPageAdapter(integers));
         //滑动反向
         mBanner.setOrientation(Banner.VERTICAL);
         //指示器位置
         mBanner.setIndicator(new MyCircleIndicator(getActivity()));
         mBanner.setIndicatorGravity(IndicatorConfig.Direction.CENTER);
         mBanner.setIndicatorSelectedColor(getResources().getColor(R.color.indicator_colors));
+        mBanner.setIndicatorWidth(SizeUtils.dp2px(25),SizeUtils.dp2px(25));
+        mBanner.setIndicatorSpace(SizeUtils.dp2px(20));
+        mBanner.setIndicatorMargins(new IndicatorConfig.Margins(SizeUtils.dp2px(40)));
         //是否允许手动滑动
         mBanner.setUserInputEnabled(true);
         //自动滑动的间隔时间

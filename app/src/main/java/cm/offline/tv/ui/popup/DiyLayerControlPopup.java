@@ -35,15 +35,15 @@ public class DiyLayerControlPopup extends BasePopupWindow {
     @BindView(R.id.layer_list)
     RecyclerView mLayerList;
     @BindView(R.id.btn_diy_left_zhihuan)
-    ImageView mBtnDiyLeftZhihuan;
+    ImageView mBtnDiyLeftZhihuan; //置换
     @BindView(R.id.btn_diy_left_shuiping)
-    ImageView mBtnDiyLeftShuiping;
+    ImageView mBtnDiyLeftShuiping; //水平
     @BindView(R.id.btn_diy_left_chuizhi)
-    ImageView mBtnDiyLeftChuizhi;
+    ImageView mBtnDiyLeftChuizhi; //垂直
     @BindView(R.id.btn_diy_left_zhiqian)
-    ImageView mBtnDiyLeftZhiqian;
+    ImageView mBtnDiyLeftZhiqian; //置前
     @BindView(R.id.btn_diy_left_zhihou)
-    ImageView mBtnDiyLeftZhihou;
+    ImageView mBtnDiyLeftZhihou; //置后
 
     private LinearLayoutManager mLayoutManager;
     private ChooseLayerAdapter mChooseLayerAdapter;
