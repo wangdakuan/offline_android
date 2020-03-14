@@ -83,7 +83,8 @@ public class RightAdvertisingFragment extends Fragment {
         mBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(Object data, int position) {
-                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_CUSTOM_PAGE));
+//                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_CUSTOM_PAGE));
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_OPERATION_PAGE));
             }
 
             @Override

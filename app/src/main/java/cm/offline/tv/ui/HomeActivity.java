@@ -32,10 +32,11 @@ import butterknife.ButterKnife;
 import cm.offline.tv.R;
 import cm.offline.tv.event.MessageEvent;
 import cm.offline.tv.service.MonitorTouchService;
-import cm.offline.tv.ui.right.FaultErrorFragment;
+import cm.offline.tv.ui.right.error.FaultErrorFragment;
 import cm.offline.tv.ui.right.PayStatusFragment;
 import cm.offline.tv.ui.right.RightAdvertisingFragment;
 import cm.offline.tv.ui.right.RightCustomMadeFragment;
+import cm.offline.tv.ui.right.operation.OperationFragment;
 import cm.offline.tv.utils.FragmentUtils;
 
 /**
@@ -65,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_home);
         ButterKnife.bind(this);
+//        EventBus.getDefault().post(new MessageEvent(MessageEvent.START_RIGHT_ADVERTISING_PAGE));
         FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightAdvertisingFragment(), R.id.main_right_fragment, false);
 //        if (!isAccessibilitySettingsOn(this)) {
 //            try {
@@ -92,6 +94,10 @@ public class HomeActivity extends AppCompatActivity {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new PayStatusFragment(), R.id.main_right_fragment, false);
         } else if (event.mEventKey == MessageEvent.START_FAULT_ERROR_PAGE) {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new FaultErrorFragment(), R.id.main_right_fragment, false);
+        } else if (event.mEventKey == MessageEvent.START_OPERATION_PAGE) {
+            FragmentUtils.replaceFragment(getSupportFragmentManager(), new OperationFragment(), R.id.main_right_fragment, false);
+        }else if (event.mEventKey == MessageEvent.START_RIGHT_ADVERTISING_PAGE) {
+            FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightAdvertisingFragment(), R.id.main_right_fragment, false);
         }
     }
 

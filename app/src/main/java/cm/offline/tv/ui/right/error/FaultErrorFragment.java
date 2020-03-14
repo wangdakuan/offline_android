@@ -1,4 +1,4 @@
-package cm.offline.tv.ui.right;
+package cm.offline.tv.ui.right.error;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
