@@ -51,7 +51,8 @@ public class MethodPaymentPopup extends BasePopupWindow {
                 break;
             case R.id.btn_exit:
                 dismiss();
-                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_PAY_STATUS_PAGE));
+//                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_PAY_STATUS_PAGE));
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.START_FAULT_ERROR_PAGE));
                 break;
         }
     }

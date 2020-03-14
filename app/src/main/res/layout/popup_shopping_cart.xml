@@ -69,7 +69,7 @@
                     android:layout_width="600dp"
                     android:layout_height="100dp"
                     android:paddingBottom="20dp"
-                    android:background="@mipmap/btn_window_gradient_color_ok_click"
+                    android:background="@mipmap/btn_window_gradient_click2"
                     android:gravity="center"
                     android:text="确定"
                     android:textColor="@color/text_colors_ffffff"

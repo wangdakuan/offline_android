@@ -3,7 +3,7 @@
     android:id="@+id/ly_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_colors_f8f8f8"
+    android:background="@color/text_colors_343338"
     android:orientation="vertical">
 
     <FrameLayout
@@ -133,28 +133,30 @@
         <LinearLayout
             android:id="@+id/ly_bottom_preview_view"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="84dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_rounded_corners_t50"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/btn_bottom_shopping_list"
                     android:layout_width="wrap_content"
-                    android:layout_height="84dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/btn_diy_bottom_shopping_list_default" />
 
                 <ImageView
                     android:id="@+id/btn_bottom_shopping_add"
                     android:layout_width="wrap_content"
-                    android:layout_height="84dp"
+                    android:layout_height="wrap_content"
                     android:src="@mipmap/btn_diy_bottom_shopping_add_default" />
             </LinearLayout>
 
@@ -170,7 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/diy_btn_bottom_kuanshi"

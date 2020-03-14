@@ -15,11 +15,9 @@
 package cm.offline.tv.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +32,7 @@ import butterknife.ButterKnife;
 import cm.offline.tv.R;
 import cm.offline.tv.event.MessageEvent;
 import cm.offline.tv.service.MonitorTouchService;
+import cm.offline.tv.ui.right.FaultErrorFragment;
 import cm.offline.tv.ui.right.PayStatusFragment;
 import cm.offline.tv.ui.right.RightAdvertisingFragment;
 import cm.offline.tv.ui.right.RightCustomMadeFragment;
@@ -89,8 +88,10 @@ public class HomeActivity extends AppCompatActivity {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new RightCustomMadeFragment(), R.id.main_right_fragment, false);
         } else if (event.mEventKey == MessageEvent.START_ADVERTISING_PAGE) {
             finish();
-        }else if (event.mEventKey == MessageEvent.START_PAY_STATUS_PAGE) {
+        } else if (event.mEventKey == MessageEvent.START_PAY_STATUS_PAGE) {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), new PayStatusFragment(), R.id.main_right_fragment, false);
+        } else if (event.mEventKey == MessageEvent.START_FAULT_ERROR_PAGE) {
+            FragmentUtils.replaceFragment(getSupportFragmentManager(), new FaultErrorFragment(), R.id.main_right_fragment, false);
         }
     }
 

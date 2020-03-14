@@ -1,12 +1,11 @@
 package cm.offline.tv.ui;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import cm.offline.tv.R;
-import cm.offline.tv.utils.ActivityUtils;
 import com.google.android.exoplayer2.ExoPlaybackException;
 
 import butterknife.BindView;
@@ -16,6 +15,8 @@ import chuangyuan.ycj.videolibrary.listener.VideoInfoListener;
 import chuangyuan.ycj.videolibrary.video.ExoUserPlayer;
 import chuangyuan.ycj.videolibrary.video.VideoPlayerManager;
 import chuangyuan.ycj.videolibrary.widget.VideoPlayerView;
+import cm.offline.tv.R;
+import cm.offline.tv.utils.ActivityUtils;
 
 /**
  * Copyright (C), 2015-2020, 湖南靠谱科技股份有限公司
@@ -34,6 +35,9 @@ public class AdvertisingPage extends AppCompatActivity {
     VideoPlayerView mVideoView; //视频控件
 
     ExoUserPlayer exoPlayerManager; //视频播放管理组件
+    @BindView(R.id.iv_opps)
+
+    ImageView mIvOpps;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +78,7 @@ public class AdvertisingPage extends AppCompatActivity {
             }
         });
         //播放视频
-        exoPlayerManager.startPlayer();
+//        exoPlayerManager.startPlayer();
     }
 
     @OnClick(R.id.view_screen)

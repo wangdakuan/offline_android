@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <chuangyuan.ycj.videolibrary.widget.VideoPlayerView
@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
+        android:visibility="gone"
         app:controller_layout_id="@layout/simple_exo_playback_list_view"
         app:fastforward_increment="0"
         app:paddingEnd="0dp"
@@ -22,8 +23,16 @@
         app:surface_type="texture_view"
         app:use_artwork="true"
         app:use_controller="true" />
+
+    <ImageView
+        android:id="@+id/iv_opps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_img_opps_1_full" />
+
     <View
         android:id="@+id/view_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </FrameLayout>
