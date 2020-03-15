@@ -2,6 +2,7 @@ package cm.offline.tv.ui.left;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import cm.offline.tv.R;
 import cm.offline.tv.ui.adapter.SlidingPageAdapter;
+import cm.offline.tv.ui.popup.LeftPrintPopup;
+import cm.offline.tv.ui.popup.PickGoodsPopup;
 import cm.offline.tv.utils.SizeUtils;
 
 /**
@@ -44,6 +47,10 @@ public class LeftFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.btn_pick_goods)
     ImageView mBtnPickGoods;
+
+    LeftPrintPopup mLeftPrintPopup; //取货打印弹框
+
+    PickGoodsPopup mPickGoodsPopup; //取货弹框
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,5 +98,26 @@ public class LeftFragment extends Fragment {
 
     @OnClick(R.id.btn_pick_goods)
     public void onViewClicked() { //取货
+        showPickGoods();
+    }
+
+    /**
+     * 打印弹框
+     */
+    private void showPrint() {
+        if (mLeftPrintPopup == null) {
+            mLeftPrintPopup = new LeftPrintPopup(getActivity());
+        }
+        mLeftPrintPopup.showPopupWindow(mBanner);
+    }
+
+    /**
+     * 取货弹框
+     */
+    private void showPickGoods() {
+        if (mPickGoodsPopup == null) {
+            mPickGoodsPopup = new PickGoodsPopup(getActivity());
+        }
+        mPickGoodsPopup.showPopupWindow(mBanner);
     }
 }

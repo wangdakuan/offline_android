@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="504dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="382dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/bg_colors_f9f9fa"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ly_btn_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/btn_scan_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/btn_window_gradient_click"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:text="扫码取货"
+                android:textColor="@color/text_colors_ffffff"
+                android:textSize="30dp" />
+
+
+            <TextView
+                android:id="@+id/btn_code_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/btn_window_gradient_click"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:text="取货码取货"
+                android:textColor="@color/text_colors_ffffff"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_scan_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_code_pick_goods" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="扫码取货"
+                android:textColor="@color/text_colors_000000"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_keyboard_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_keyboard"
+                android:layout_width="374dp"
+                android:layout_height="70dp"
+                android:background="@drawable/bg_keyboard_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="23dp"
+                android:paddingRight="23dp"
+                android:hint="输入取货码"
+                android:textColorHint="@color/text_colors_010103"
+                android:textColor="@color/text_colors_010103"
+                android:textSize="20dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_keyboard_btn"
+                android:layout_marginTop="17dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="25dp"
+        android:src="@mipmap/btn_click_close" />
+</FrameLayout>

@@ -115,7 +115,7 @@
                         android:background="@drawable/btn_white_or_blue_selector"
                         android:gravity="center"
                         android:text="XS"
-                        android:textColor="@color/text_white_or_blue_selector"
+                        android:textColor="@color/text_white_or_black_selector"
                         android:textSize="20dp" />
 
                     <TextView
@@ -126,7 +126,7 @@
                         android:background="@drawable/btn_white_or_blue_selector"
                         android:gravity="center"
                         android:text="S"
-                        android:textColor="@color/text_white_or_blue_selector"
+                        android:textColor="@color/text_white_or_black_selector"
                         android:textSize="20dp" />
 
                     <TextView
@@ -137,7 +137,7 @@
                         android:background="@drawable/btn_white_or_blue_selector"
                         android:gravity="center"
                         android:text="M"
-                        android:textColor="@color/text_white_or_blue_selector"
+                        android:textColor="@color/text_white_or_black_selector"
                         android:textSize="20dp" />
 
                     <TextView
@@ -148,7 +148,7 @@
                         android:background="@drawable/btn_white_or_blue_selector"
                         android:gravity="center"
                         android:text="L"
-                        android:textColor="@color/text_white_or_blue_selector"
+                        android:textColor="@color/text_white_or_black_selector"
                         android:textSize="20dp" />
 
                     <TextView
@@ -159,7 +159,7 @@
                         android:background="@drawable/btn_white_or_blue_selector"
                         android:gravity="center"
                         android:text="XL"
-                        android:textColor="@color/text_white_or_blue_selector"
+                        android:textColor="@color/text_white_or_black_selector"
                         android:textSize="20dp" />
 
                 </LinearLayout>
